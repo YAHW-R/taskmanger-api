@@ -40,7 +40,7 @@ ___
 - id : string
 - username : string
 - password : encoded string
-- status : enum = ( admin, normal )
+- status : enum = ( admin, user )
 
 ### Task
 
@@ -48,7 +48,8 @@ ___
 - name : string
 - description : string
 - userid : id
-- maxdate : date 
+- createddate : date
+- finallydate : date 
 
 ### Description 
 
@@ -56,6 +57,7 @@ ___
 - general-information : string
 - general-functions : string[]
 - structure : string[]
+- admin-password : string
 
 ___
 
@@ -99,7 +101,7 @@ This method delete the task by their id
 
 ### Description 
 
-#### Method `Get((`
+#### Method `Get()`
 
 This method return the all information of the project 
 
