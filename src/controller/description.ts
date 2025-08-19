@@ -1,7 +1,13 @@
 import { projectDescription } from "../data/project";
 
-export const getProjectDescription = (): string => {
-    return JSON.stringify(projectDescription, null, 2);
+export const getProjectDescription = () => {
+    const description = projectDescription;
+    return {
+        projectName: description.projectName,
+        generalInformation: description.generalInformation,
+        generalFunctions: description.generalFunctions,
+        structure: description.structure
+    };
 }
 
 export const editPojectName = (name: string): void => {
@@ -11,6 +17,12 @@ export const editPojectName = (name: string): void => {
 export const editProjectGeneralInformation = (generalInformation: string): void => {
     projectDescription.generalInformation = generalInformation;
 }
+
+export const setPojectGeneralFunctions = (functions: string[]): void => {
+    projectDescription.generalFunctions = functions;
+}
+
+
 
 export const addProjectGeneralFunction = (functionName: string): void => {
     projectDescription.generalFunctions.push(functionName);
@@ -29,6 +41,10 @@ export const addProjectStructure = (structure: string[]): void => {
     projectDescription.structure.push(structure);
 }
 
+export const setProjectStructure = (structure: string[][]): void => {
+    projectDescription.structure = structure;
+}
+
 export const removeProjectStructure = (structure: string[]): boolean => {
     const index = projectDescription.structure.findIndex(s => JSON.stringify(s) === JSON.stringify(structure));
     if (index > -1) {
@@ -40,4 +56,8 @@ export const removeProjectStructure = (structure: string[]): boolean => {
 
 export const setAdminPassword = (password: string): void => {
     projectDescription.adminPassword = password;
+}
+
+export const getAdminPassword = (): string => {
+    return projectDescription.adminPassword;
 }
