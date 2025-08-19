@@ -2,12 +2,11 @@ import { Schema, Document, model, models } from "mongoose";
 
 export interface ITask extends Document {
      id: string,
-     name: string,
+     title: string,
      description: string,
-     status: "todo" | "in-progress" | "done",
+     status: "pending" | "in-progress" | "completed",
      userId: string,
      createdAt: Date,
-     updatedAt: Date,
      finallyAT: Date
 }
 
@@ -19,7 +18,7 @@ const TaskSchema = new Schema<ITask>({
           trim: true,
           default: () => crypto.randomUUID() // Generate a unique ID
      },
-     name: {
+     title: {
           type: String,
           required: true,
           trim: true
@@ -32,8 +31,8 @@ const TaskSchema = new Schema<ITask>({
      status: {
           type: String,
           required: true,
-          enum: ["todo", "in-progress", "done"],
-          default: "todo"
+          enum: ["pending", "in-progress", "completed"],
+          default: "pending"
      },
      userId: {
           type: String,
@@ -41,10 +40,6 @@ const TaskSchema = new Schema<ITask>({
           trim: true
      },
      createdAt: {
-          type: Date,
-          default: Date.now
-     },
-     updatedAt: {
           type: Date,
           default: Date.now
      },
